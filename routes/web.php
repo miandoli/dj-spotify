@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get('/join', function () {
+    return view('join');
+});
+
+Route::get('/host', function () {
+    return view('host');
+});
+
+Route::get('/party/{party_id}', function () {
+    return view('join');
+});
