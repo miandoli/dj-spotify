@@ -1,8 +1,29 @@
 // Fonts
+<<<<<<< HEAD
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+=======
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+>>>>>>> luke-develop
 
 // Variables
 @import 'variables';
 
+<<<<<<< HEAD
+// Colors
+$primary: $blue;
+$secondary: $light-gray;
+$dark: $dark-gray;
+$light: $white;
+//$danger: ;
+
+// Styles
+
+.btn-main {
+    width: 100%;
+    border-radius: 2rem !important;
+}
+
+=======
+>>>>>>> luke-develop
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
