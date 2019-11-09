@@ -12,7 +12,7 @@ function join() {
 
 function valid() {
     var text = $("#txtCode").val();
-    if (text.length < 4) {
+    if (text != null && text.length < 4) {
         $("#btnJoin").prop('disabled', true);
     } else {
         $("#btnJoin").prop('disabled', false);
