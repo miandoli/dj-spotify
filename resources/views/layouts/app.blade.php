@@ -12,9 +12,12 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="js/authentication.js"></script>
     <script src="{{ asset('js/join.js') }}" defer></script>
+    <script src="{{ asset('js/all.js') }}" defer></script>
+    <script src="{{ asset('js/party.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
