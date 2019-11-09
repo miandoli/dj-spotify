@@ -7,15 +7,26 @@ use Tests\TestCase;
 
 class ExampleTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
-    {
-        $response = $this->get('/');
+    public function testAddUser() {
+      $this->withoutMiddleware();
+      $this->withoutExceptionHandling();
 
-        $response->assertStatus(200);
+      $this->post('/user/add', [
+        'refresh_token' => "sddfsdfsdf",
+        'account_token' => "asdasdasd",
+        'username' => "sauceboi"
+      ])->assertStatus(200);
+    }
+
+    public function testCreateParty() {
+      $this->withoutMiddleware();
+      $this->withoutExceptionHandling();
+
+      $this->post('/party/create', [
+        "name" => "Luke"
+      ])->assertStatus(200);
+
+      
+
     }
 }
