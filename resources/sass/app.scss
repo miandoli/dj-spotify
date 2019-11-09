@@ -6,7 +6,17 @@
 
 // Colors
 $primary: $blue;
+$secondary: $light-gray;
 $dark: $dark-gray;
-//$secondary: ;
+$light: $white;
 //$danger: ;
-//$light: ;
+
+// Styles
+
+.btn-main {
+    width: 100%;
+    border-radius: 2rem !important;
+}
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';

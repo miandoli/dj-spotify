@@ -6,6 +6,8 @@
 </head>
 <body>
     <div id="app">
-        @yield('content')
+        <div class="container-fluid bg-dark" style="height: 100vh;">
+            @yield('content')
+        </div>
     </div>
 </body>
