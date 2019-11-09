@@ -6,15 +6,15 @@
             <div class="d-flex justify-content-center">
                 <div class="col-sm-4 col-12 m-3">
                     <div class="form-group">
-                        <input class="form-control form-control-lg" type="text" placeholder="PARTY CODE" style="text-transform:uppercase">
+                        <input id="txtCode" class="form-control form-control-lg" type="text" placeholder="PARTY CODE" style="text-transform:uppercase" onkeydown="return txtBox(event);" maxlength="4">
                     </div>
                 </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="col-sm-4 col-12 m-3">
-                    <a href="\party\10" class="btn btn-primary btn-main">
+                    <button id="btnJoin" type="button" onclick="join()" class="btn btn-primary btn-main" disabled="true">
                         <h1 class="text-light">GO</h1>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
