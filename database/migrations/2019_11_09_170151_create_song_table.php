@@ -15,7 +15,7 @@ class CreateSongTable extends Migration
     {
         Schema::create('song', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->queue('id');
+            $table->integer('queue_id');
             $table->timestamps();
         });
     }

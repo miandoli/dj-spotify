@@ -1,9 +1,4 @@
-var client_id = "c6dcb66351104f2aa5d5d88e746abdf4";
-var client_secret = "969410d48dbc409499f33d550ddf7460";
-var redirect_uri = "localhost:8000";
-
-function logIn(){
-    var scopes = 'user-read-private user-read-email';
+var scopes = 'user-read-private user-read-email';
 
     $.ajax({
         type: 'GET',
@@ -15,10 +10,10 @@ function logIn(){
             $.ajax({
                 type: 'POST',
                 url: 'https://accounts.spotify.com/api/token',
-                data: {grant_type: 'authorization_code', code: data.code, 
+                data: {grant_type: 'authorization_code', code: data.code,
                         redirect_uri: redirect_uri},
                 beforeSend: function(xhr){
-                    xhr.setRequestHeader("Authorization", "Basic " 
+                    xhr.setRequestHeader("Authorization", "Basic "
                     + btoa(client_id) + ":" + btoa(client_secret))
                 },
                 success: function(data){
@@ -27,28 +22,16 @@ function logIn(){
                         type: 'GET',
                         url: 'https://api.spotify.com/v1/me',
                         beforeSend: function(xhr){
-                            xhr.setRequestHeader("Authorization", "Bearer " 
+                            xhr.setRequestHeader("Authorization", "Bearer "
                             + data.access_token);
                         },
                         success: function(data){
                             username = data.display_name;
                         }
                     });
-                    $.ajax({
-                        type:'POST',
-                        url:'/user/add',
-                        data:{refresh_token: data.refresh_token, 
-                                access_token: data.access_token,
-                                username: username},
-                        success:function(data){
-                            console.log(data);
-                        },
-                        error:function(data){
-                            console.log("Error contacting Laraval server.");
-                        }
-                    });
+
+                    //Save data.refresh_token data.access_token username to database
                 }
             });
         }
     });
-}

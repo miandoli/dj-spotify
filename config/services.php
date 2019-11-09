@@ -29,5 +29,10 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    'spotify' => [
+      'client_id' => env('SPOTIFY_KEY', "c6dcb66351104f2aa5d5d88e746abdf4"),
+      'client_secret' => env('SPOTIFY_SECRET', "969410d48dbc409499f33d550ddf7460"),
+      'redirect' => env('SPOTIFY_REDIRECT_URI',  "localhost:8000")
+    ],
 
 ];

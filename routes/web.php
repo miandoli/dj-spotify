@@ -11,5 +11,9 @@
 |
 */
 
-Route::post("/user/add", "UserController@index");
+Route::get("/user/add", "UserController@index");
 Route::post("/party/create", "PartyController@create");
+
+Route::get ("/", function() {
+  return view('welcome');
+});

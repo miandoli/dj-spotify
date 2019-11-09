@@ -10,5 +10,5 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $fillable = ["refresh_key", "username"];
+    protected $fillable = ["refresh_token", "access_token", "username"];
 }

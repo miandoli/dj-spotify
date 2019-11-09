@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth;
+use \App\User;
+
+use Rennokki\Larafy\Larafy;
+use GuzzleHttp;
 
 class UserController extends Controller
 {
@@ -16,15 +20,15 @@ class UserController extends Controller
      */
     function index(Request $request) {
 
-      if(!Auth::check()) { //if the user is not logged in
-        User::create([
-          "refresh_key" => $request->refresh_key,
-          "username" => $request->username
-        ]);
+      $client = new GuzzleHttp\Client();
+      $res = $client->get('https://accounts.spotify.com/authorize', [
+        "response_type" => "code",
+        "client_id" => "c6dcb66351104f2aa5d5d88e746abdf4",
+        "redirect_uri" => 'localhost:8000',
+        "scopes" => "user-read-private user-read-email"
+      ]);
 
-        return response()->json(["success" => "The user authentication data has been stored"]);
-      }
 
-      return response()->json(["success" => "The user is already authenticated"]);
+      echo $res->getBody(); // { "type": "User", ....
     }
 }
