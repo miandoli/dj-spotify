@@ -11,9 +11,15 @@
 |
 */
 
-Route::get("/user/add", "UserController@index");
-Route::post("/party/create", "PartyController@create");
+Route::get("/host", "UserController@index");
 
-Route::get ("/", function() {
+Route::get("/", function() {
   return view('welcome');
 });
+Route::post("/", function() {
+  return view('welcome');
+});
+
+Route::get('/callback', "UserController@create");
+
+Route::post("/search", "SearchController@search");
