@@ -22,4 +22,4 @@ Route::post("/", function() {
 
 Route::get('/callback', "UserController@create");
 
-Route::get("/search/{search}", "SearchController@search");
+Route::post("/search", "SearchController@search");
