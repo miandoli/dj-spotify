@@ -12,6 +12,15 @@
     <script src="{{ asset('js/app.js') }}" defer></script>
 
     <script src="js/authentication.js"></script>
+<<<<<<< HEAD
+=======
+    <script src="{{ asset('js/join.js') }}" defer></script>
+    <script src="{{ asset('js/all.js') }}" defer></script>
+    <script src="{{ asset('js/party.js') }}" defer></script>
+    <script src="{{ asset('js/join.js') }}" defer></script>
+    <script src="{{ asset('js/all.js') }}" defer></script>
+    <script src="{{ asset('js/party.js') }}" defer></script>
+>>>>>>> 17534509392fd39c69edafcaf25627fd5cd6cd6a
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -19,6 +28,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
