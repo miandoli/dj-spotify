@@ -24,5 +24,5 @@ Route::get('/host', function () {
 });
 
 Route::get('/party/{party_id}', function () {
-    return view('join');
+    return view('party');
 });
