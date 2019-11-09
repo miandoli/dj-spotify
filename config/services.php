@@ -32,7 +32,7 @@ return [
     'spotify' => [
       'client_id' => env('SPOTIFY_KEY', "c6dcb66351104f2aa5d5d88e746abdf4"),
       'client_secret' => env('SPOTIFY_SECRET', "969410d48dbc409499f33d550ddf7460"),
-      'redirect' => env('SPOTIFY_REDIRECT_URI',  "localhost:8000")
+      'redirect' => env('SPOTIFY_REDIRECT_URI',  "http://localhost:8000")
     ],
 
 ];
