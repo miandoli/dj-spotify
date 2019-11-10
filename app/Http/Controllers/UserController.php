@@ -78,7 +78,7 @@ class UserController extends Controller
         $user->party_id = $party->id;
         $user->save();
 
-        return redirect("/host/{$party->code}/");
+        return redirect("/playlist");
 
       }
 

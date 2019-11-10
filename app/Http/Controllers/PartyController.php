@@ -12,7 +12,7 @@ class PartyController extends Controller
   function index(Request $request, $code) {
 
       if(Party::where('code', $code)->exists()) {
-        return view("party");
+        return view("party", ["code" => $code]);
       } else {
         return back();
       }

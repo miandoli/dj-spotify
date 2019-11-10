@@ -32,7 +32,7 @@ Route::get('/party', function () {
     return view('party');
 });
 
-Route::get('/host/playlist', function () {
+Route::get('/playlist', function () {
     return view('playlist');
 });
 

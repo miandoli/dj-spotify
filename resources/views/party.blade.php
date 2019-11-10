@@ -7,7 +7,7 @@
                 <p class="text-secondary m-0">Party Code</p>
             </div>
             <div class="d-flex justify-content-center">
-                <h1 class="text-light">YEET</h1>
+                <h1 class="text-light">{{ $code }}</h1>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="col-sm-4 col-12 m-3">
