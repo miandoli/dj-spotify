@@ -14,7 +14,8 @@ class CreateQueuesTable extends Migration
     public function up()
     {
         Schema::create('queues', function (Blueprint $table) {
-            $table->string('id');
+            $table->bigIncrements("id");
+            $table->string('song_id');
             $table->integer('party_id');
             $table->decimal('litness_score');
             $table->timestamps();

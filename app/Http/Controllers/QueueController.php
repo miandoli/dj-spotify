@@ -54,7 +54,7 @@ class QueueController extends Controller
       $litness_score = $lit - $notlit;
 
       $song = new Queue;
-      $song->id = $request->id;
+      $song->song_id = $request->id;
       $song->party_id = $party->id;
       $song->litness_score = $litness_score;
 //      $song->tempo = $stats->tempo;
@@ -84,10 +84,10 @@ class QueueController extends Controller
       $ids = array();
 
       foreach($queueableSongs as $q) {
-        array_push($ids, $q->id);
+        array_push($ids, $q->song_id);
       }
 
-      return response()->json(['queue' => $queueableSongs]);
+      return response()->json(['queue' => $api->getTracks($ids)]);
     }
 
     public function playNextSong(Request $request) {
