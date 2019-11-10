@@ -1,8 +1,8 @@
-function search(e){
+function search(e) {
     e.preventDefault();
     var q = this.innerHTML;
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: '/search',
         data = {q: q},
         success: function(data){
