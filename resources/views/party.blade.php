@@ -4,6 +4,12 @@
     <div class="d-flex align-items-center" style="height: 100%;">
         <div class="col">
             <div class="d-flex justify-content-center">
+                <p class="text-secondary m-0">Party Code</p>
+            </div>
+            <div class="d-flex justify-content-center">
+                <h1 class="text-light">YEET</h1>
+            </div>
+            <div class="d-flex justify-content-center">
                 <div class="col-sm-4 col-12 m-3">
                     <div class="form-group">
                         <input id="txtSong" class="form-control form-control-lg" type="text" placeholder="search">

@@ -10,17 +10,13 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
     <script src="js/authentication.js"></script>
-<<<<<<< HEAD
-=======
     <script src="{{ asset('js/join.js') }}" defer></script>
     <script src="{{ asset('js/all.js') }}" defer></script>
     <script src="{{ asset('js/party.js') }}" defer></script>
     <script src="{{ asset('js/join.js') }}" defer></script>
     <script src="{{ asset('js/all.js') }}" defer></script>
     <script src="{{ asset('js/party.js') }}" defer></script>
->>>>>>> 17534509392fd39c69edafcaf25627fd5cd6cd6a
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,32 +28,23 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                    </ul>
-                </div>
+        <div class="bg-secondary" style="height: 10vh; width: 100%;">
+            <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                <img src="/img/logo.png" class="img-fluid" alt="logo" style="width: 3rem;">
+                <h1 class="text-light text-uppercase">DJ Spotify</h1>
             </div>
-        </nav>
-
-        <main class="py-4">
+        </div>
+        <div class="container-fluid bg-dark" style="height: 80vh;">
             @yield('content')
-        </main>
+        </div>
+        <div class="bg-secondary" style="height: 10vh; width: 100%;">
+            <div class="d-flex justify-content-center align-items-center" style="height: 50%;">
+                <p class="text-light m-0" style="font-size: 0.75rem;">Created by Matt Iandoli, Micheal Bosik, and Luke Trujillo</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center" style="height: 50%;">
+                <h4 class="text-light">HackWITus 2019</h4>
+            </div>
+        </div>
     </div>
 </body>
 </html>
