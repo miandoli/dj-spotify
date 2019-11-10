@@ -15,9 +15,7 @@ class CreatePartyTable extends Migration
     {
         Schema::create('party', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
             $table->string('code', 4);
-            $table->integer('user_id');
             $table->timestamps();
         });
     }
