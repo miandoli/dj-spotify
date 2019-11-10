@@ -23,6 +23,7 @@ function addToQueue(id, code){
     $.ajax({
         type: 'POST',
         url: "/queue/add",
+        async: false,
         data: {id: id, code: code},
         beforeSend: function(xhr, type) {
             if (!type.crossDomain) {
@@ -50,7 +51,7 @@ function addPlaylist(id, code){
             }
         },
         success: function(data) {
-            var playlist = data.playlist.tracks.items;
+            var playlist = data.playlist.items;
             for (var i = 0; i < playlist.length; i++) {
                 var song = playlist[i].track.id;
                 addToQueue(song, code);
@@ -76,8 +77,10 @@ function getPlaylist(){
         type: 'GET',
         url: '/queue/get',
         success: function(data){
-            console.log(data);
-            // hostQueue(data);
+            hostQueue(data);
+        },
+        error: function () {
+            console.log("shit");
         }
     });
 }

@@ -87,7 +87,7 @@ class UserController extends Controller
         $api->setAccessToken(Auth::user()->access_token);
 
         $playlists = $api->getUserPlaylists($api->me()->id, [
-          'limit' => 5
+          'limit' => 50
         ]);
 
 

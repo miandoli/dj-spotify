@@ -65,7 +65,7 @@ class QueueController extends Controller
 
     public function addPlaylist(Request $request) {
         $api = new Larafy();
-        $playlist = $api->getPlaylist($request->id);
+        $playlist = $api->getPlaylistTracks($request->id, 10, 0);
         return response()->json(['playlist' => $playlist]);
     }
 
@@ -79,7 +79,7 @@ class QueueController extends Controller
     public function getPartyQueue(Request $request) {
       $api = new Larafy();
 
-      $queueableSongs = Queue::where("party_id", Auth::user()->party->id)->orderBy("litness_score")->get();
+      $queueableSongs = Queue::where("party_id", Auth::user()->party->id)->get();
 
       $ids = array();
 
