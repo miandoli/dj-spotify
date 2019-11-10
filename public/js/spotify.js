@@ -29,8 +29,11 @@ function addToQueue(id, code){
                 xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'));
             }
         },
-        success: function() {
-
+        success: function(data) {
+            console.log(data);
+        },
+        error: function() {
+            console.log("shit");
         }
     });
 }

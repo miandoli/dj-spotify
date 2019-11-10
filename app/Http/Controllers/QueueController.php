@@ -14,6 +14,7 @@ use SpotifyWebAPI;
 
 use \App\Queue;
 use \App\Party;
+use \App\Host;
 
 class QueueController extends Controller
 {
@@ -29,37 +30,37 @@ class QueueController extends Controller
 
       $track = $api->getTrack($request->id);
 
-      $party = Party::where("code", $request->code);
-
+      $party = Party::where("code", $request->code)->first();
       $client = new Client(); //GuzzleHttp\Client
-//      $result = $client->get("https://api.spotify.com/v1/audio-features/{$track->id}", [
-//            "headers" => ["Authorization" => "Bearer ".User::where('party_id', $party->id)->first()->access_token]
-//        ]);
-//
-//      $stats = json_decode($result->getBody()->read(2048));
-//
-//      $litness_score = rand(0, 1);
-//
-//      $fD = $stats->danceability;
-//      $fE = $stats->energy;
-//      $fV = $stats->valence;
-//      $fS = $stats->speechiness;
-//      $fA = $stats->acousticness;
-//      $fI = $stats->instrumentalness;
-//
-//      $lit = ((fD * cD) + (fE * cE) + (fV * cV) / 3);
-//      $notlit = ((fS * cS) + (fA * cA) + (fI * cI) / 3);
-//
-//      $litness_score = $lit - $notlit;
-//
-//      $song = new Queue;
-//      $song->id = $request->id;
-//      $song->party_id = Auth::user()->party->id;
-//      $song->litness_score = $litness_score;
+
+        $result = $client->get("https://api.spotify.com/v1/audio-features/{$track->id}", [
+            "headers" => ["Authorization" => "Bearer ".Host::where('party_id', $party->id)->first()->access_token]
+        ]);
+
+      $stats = json_decode($result->getBody()->read(2048));
+
+      $litness_score = rand(0, 1);
+
+      $fD = $stats->danceability;
+      $fE = $stats->energy;
+      $fV = $stats->valence;
+      $fS = $stats->speechiness;
+      $fA = $stats->acousticness;
+      $fI = $stats->instrumentalness;
+
+      $lit = (($fD * $cD) + ($fE * $cE) + ($fV * $cV) / 3);
+      $notlit = (($fS * $cS) + ($fA * $cA) + ($fI * $cI) / 3);
+
+      $litness_score = $lit - $notlit;
+
+      $song = new Queue;
+      $song->id = $request->id;
+      $song->party_id = $party->id;
+      $song->litness_score = $litness_score;
 //      $song->tempo = $stats->tempo;
-//
-//      $song->save();
-      return response()->json(['song' => 'yeet']);
+
+      $song->save();
+      return response()->json(['song' => $song]);
     }
 
     public function addPlaylist(Request $request) {
