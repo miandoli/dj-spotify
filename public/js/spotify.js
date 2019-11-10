@@ -19,7 +19,7 @@ function search(query){
     });
 }
 
-function addToQueue(id, code){
+function addToQueue(id, code, isPlaylist){
     $.ajax({
         type: 'POST',
         url: "/queue/add",
@@ -31,10 +31,9 @@ function addToQueue(id, code){
             }
         },
         success: function(data) {
-            console.log(data);
-        },
-        error: function() {
-            console.log("shit");
+            if (!isPlaylist) {
+                alert("Song added to the queue!");
+            }
         }
     });
 }
@@ -54,7 +53,7 @@ function addPlaylist(id, code){
             var playlist = data.playlist.items;
             for (var i = 0; i < playlist.length; i++) {
                 var song = playlist[i].track.id;
-                addToQueue(song, code);
+                addToQueue(song, code, true);
             }
             window.location = "/host/" + code;
         }
