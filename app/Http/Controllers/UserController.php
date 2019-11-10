@@ -83,8 +83,13 @@ class UserController extends Controller
       }
 
       function getPlaylists(Request $request) {
-        $api = new Larafy();
-        $playlists = $api->getCategoryPlaylists('party', 10, 0);
+        $api = new SpotifyWebAPI\SpotifyWebAPI();
+        $api->setAccessToken(Auth::user()->access_token);
+
+        $playlists = $api->getUserPlaylists($api->me()->id, [
+          'limit' => 5
+        ]);
+
 
         return response()->json(['playlists' => $playlists]);
       }
