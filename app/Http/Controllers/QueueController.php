@@ -111,7 +111,7 @@ class QueueController extends Controller
         return response()->json(["song" => $api->getTrack($track->song_id)]);
       }
 
-        return response()->json(["song"] => null);
+        return response()->json(["song" => null]);
     }
 
 
