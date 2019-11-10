@@ -1,22 +1,8 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
 @import 'variables';
-
-// Colors
-$primary: $blue;
-$secondary: $light-gray;
-$dark: $dark-gray;
-$light: $white;
-//$danger: ;
-
-// Styles
-
-.btn-main {
-    width: 100%;
-    border-radius: 2rem !important;
-}
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

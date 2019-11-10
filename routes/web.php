@@ -31,6 +31,7 @@ Route::get("/party/{code}", "PartyController@index");
 Route::get('/party', function () {
     return view('party');
 });
+
 Route::post("/", function() {
   return view('welcome');
 });
