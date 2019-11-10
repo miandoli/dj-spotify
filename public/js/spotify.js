@@ -76,7 +76,8 @@ function getPlaylist(){
         type: 'GET',
         url: '/queue/get',
         success: function(data){
-            return data.queue;
+            console.log(data);
+            // hostQueue(data);
         }
     });
 }

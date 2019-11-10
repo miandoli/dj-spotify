@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="{{ asset('js/playlist.js') }}" defer></script>
     <div class="d-flex align-items-center" style="height: 100%;">
         <div class="col">
             <div class="d-flex justify-content-center">

@@ -10,12 +10,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="js/authentication.js"></script>
     <script src="{{ asset('js/spotify.js') }}" defer></script>
     <script src="{{ asset('js/join.js') }}" defer></script>
     <script src="{{ asset('js/all.js') }}" defer></script>
     <script src="{{ asset('js/party.js') }}" defer></script>
-    <script src="{{ asset('js/playlist.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

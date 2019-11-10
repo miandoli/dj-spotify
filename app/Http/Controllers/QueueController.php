@@ -79,15 +79,15 @@ class QueueController extends Controller
     public function getPartyQueue(Request $request) {
       $api = new Larafy();
 
-      $queueableSongs = Queue::where("party_id", Auth::user()->party->id)->orderBy("litness_score");
+      $queueableSongs = Queue::where("party_id", Auth::user()->party->id)->orderBy("litness_score")->get();
 
       $ids = array();
 
       foreach($queueableSongs as $q) {
-        array_push($ids, $q["id"]);
+        array_push($ids, $q->id);
       }
 
-      return response()->json(['queue' => $api->getTracks($ids)]);
+      return response()->json(['queue' => $queueableSongs]);
     }
 
     public function playNextSong(Request $request) {
