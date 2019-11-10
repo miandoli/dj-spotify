@@ -78,4 +78,12 @@ class UserController extends Controller
         return redirect("/host/{$party->code}/");
 
       }
+
+      function access() {
+        $this->middleware('auth');
+
+        return response()->json([
+          'access_token' => Auth::user()->access_token
+        ])
+      }
 }
