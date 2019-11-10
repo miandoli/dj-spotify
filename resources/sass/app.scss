@@ -16,5 +16,9 @@ $light: $white;
     border-radius: 2rem !important;
 }
 
+li:hover {
+    background-color: $secondary;
+}
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';

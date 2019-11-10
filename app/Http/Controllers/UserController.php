@@ -78,22 +78,13 @@ class UserController extends Controller
         $user->party_id = $party->id;
         $user->save();
 
-        return redirect("/playlist");
+        return redirect("/playlist/" . $party->code);
 
       }
 
       function getPlaylists(Request $request) {
-        $session = new SpotifyWebAPI\Session(
-            'c6dcb66351104f2aa5d5d88e746abdf4',
-            '969410d48dbc409499f33d550ddf7460',
-            'http://localhost:8000/callback'
-        );
-
-        $session->requestAccessToken($request->code);
-
-        $playlists = $api->getUserPlaylists($api->me()["id"], [
-          'limit' => 5
-        ]);
+        $api = new Larafy();
+        $playlists = $api->getCategoryPlaylists('party', 10, 0);
 
         return response()->json(['playlists' => $playlists]);
       }

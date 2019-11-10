@@ -27,21 +27,20 @@ Route::get("/host/{code}", function() {
 
 Route::get("/party/{code}", "PartyController@index");
 
-
 Route::get('/party', function () {
     return view('party');
 });
 
-Route::get('/playlist', function () {
-    return view('playlist');
-});
+Route::get('/playlist/{code}', "PlaylistController@index");
 
 Route::get('/callback', "UserController@create");
 
-Route::post("/search", "SearchController@search");
+Route::get("/search", "SearchController@search");
 
 Route::post("/queue/add", "QueueController@addSong");
+Route::post("/queue/playlist", "QueueController@addPlaylist");
 Route::post("/queue/delete", "QueueController@deleteSong");
-Route::post("/queue/get", "QueueController@getPartyQueue");
+Route::get("/queue/get", "QueueController@getPartyQueue");
 
-Route::post("/user/playlists", "UserController@getPlaylists");
+
+Route::get("/user/playlists", "UserController@getPlaylists");
