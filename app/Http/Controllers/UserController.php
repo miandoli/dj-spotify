@@ -39,7 +39,8 @@ class UserController extends Controller
               'user-read-private',
               'playlist-modify-public',
               'playlist-modify-private',
-              'user-modify-playback-state'
+              'user-modify-playback-state',
+              'user-read-playback-state'
           ],
         ];
         header('Location: ' . $session->getAuthorizeUrl($options));

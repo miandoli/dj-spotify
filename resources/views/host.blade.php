@@ -5,54 +5,35 @@
 
 
     <script >
-        window.onSpotifyWebPlaybackSDKReady = () => {
-            
-            var player = new Spotify.Player({
-                name: 'DJ Spotify Player',
-                getOAuthToken: callback => {
-    // Run code to get a fresh access token
 
-                callback('{{ Auth::user()->access_token }}');
-            },
-            volume: 0.5
-            });
+    setInterval( function() {
+      $.ajax({
+            type: "GET",
+            url: "/check",
+            success: function(data) {
+                if(data.song != null) {
+                  console.log(data.song);
+                  $(".song-name").text(data.song.name);
+                  $(".album-img").attr("src", data.song.album.images[0].url);
 
-            player.connect().then(success => {
-                if (success) {
-                    console.log('The Web Playback SDK successfully connected to Spotify!');
+                  $(".hide").show();
                 }
-            });
+            }
+         });
+      }, 1000);
 
-            $.ajax({
-                    type: "GET",
-                    url: "/play/next",
-                    success: function(data) {
-                        console.log("next");
-                    }
-               });
-
-            player.addListener('player_state_changed', ({ position, duration, track_window: {current_track}}) => {
-               $.ajax({
-                    type: "POST",
-                    url: "/play/next",
-                    success: function(data) {
-                        console.log("next");
-                    }
-               });
-            });
-        };
     </script>
 
     <script src="{{ asset('js/host.js') }}" defer></script>
     <div class="row" style="height: 100%;">
-        <div class="col-sm-6 col-12" style="height: 100%;">
-            <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+        <div class="col-sm-6 col-12" style="height: 100%;" >
+            <div class="d-flex justify-content-center align-items-center hide" style="height: 100%;">
                 <div class="col">
                     <h1 class="text-light text-center">Now Playing</h1>
                     <div class="text-center">
-                        <img src="/img/logo.png" class="img-fluid" alt="logo" style="width: 10rem;">
+                        <img src="" class="img-fluid album-img" alt="logo" style="width: 10rem;">
                     </div>
-                    <h1 class="text-light text-center">Song Name</h1>
+                    <h1 class="text-light text-center song-name"></h1>
                 </div>
             </div>
         </div>

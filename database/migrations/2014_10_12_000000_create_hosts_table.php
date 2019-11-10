@@ -15,8 +15,8 @@ class CreateHostsTable extends Migration
     {
         Schema::create('hosts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('refresh_token');
-            $table->string('access_token');
+            $table->text('refresh_token');
+            $table->text('access_token');
             $table->integer('party_id')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -20,8 +20,8 @@ function valid() {
 }
 
 $(document).ready(function () {
-    $("#txtCode").change('input', function(){
-        valid()
+    $("#txtCode").on('input', function(){
+        valid();
     });
     valid();
 });

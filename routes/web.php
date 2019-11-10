@@ -41,6 +41,6 @@ Route::post("/queue/add", "QueueController@addSong");
 Route::post("/queue/playlist", "QueueController@addPlaylist");
 Route::post("/queue/delete", "QueueController@deleteSong");
 Route::get("/queue/get", "QueueController@getPartyQueue");
-Route::get("/play/next", "QueueController@playNextSong");
+Route::get("/check", "QueueController@check");
 
 Route::get("/user/playlists", "UserController@getPlaylists");

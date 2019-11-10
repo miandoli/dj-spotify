@@ -90,20 +90,28 @@ class QueueController extends Controller
       return response()->json(['queue' => $api->getTracks($ids)]);
     }
 
-    public function playNextSong(Request $request) {
+
+    public function check(Request $request) {
       $api = new SpotifyWebAPI\SpotifyWebAPI();
       $api->setAccessToken(Auth::user()->access_token);
 
+      $current = $api->getMyCurrentTrack();
 
-      $track = Queue::where("party_id", Auth::user()->party->id)->orderBy("litness_score")->first();
 
-      $api->play(false, [
-        'uris' => ["spotify:track:{$track->id}"],
-      ]);
+      if($current->is_playing == false) {
+        $track = Queue::where("party_id", Auth::user()->party->id)->orderBy("litness_score")->first();
+        $request->session()->put('song', $track->song_id);
 
-      $track->delete();
+        $api->play(false, [
+          'uris' => ["spotify:track:{$track->song_id}"],
+        ]);
 
-      return response();
+        $track->delete();
+
+        return response()->json(["song" => $api->getTrack($track->song_id)]);
+      }
+
+        return response()->json(["song" => null]);
     }
 
 
