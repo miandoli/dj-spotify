@@ -2,12 +2,16 @@
 function getUser(){
     let access_token = "";
     $.ajax({
-       type: 'GET',
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+       type: 'POST',
        url: '/host/access',
        success: function(data){
            access_token = data.access_token;
-       } 
+       }
     });
+    
     $.ajax({
         type: 'GET',
         url: 'https://api.spotify.com/v1/me',

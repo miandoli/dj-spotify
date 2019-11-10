@@ -37,6 +37,9 @@ class UserController extends Controller
           'scope' => [
               'user-read-email',
               'user-read-private',
+              'playlist-modify-public',
+              'playlist-modify-private',
+              'user-modify-playback-state'
           ],
         ];
         header('Location: ' . $session->getAuthorizeUrl($options));
@@ -79,11 +82,19 @@ class UserController extends Controller
 
       }
 
-      function access() {
-        $this->middleware('auth');
+      function getPlaylists(Request $request) {
+        $session = new SpotifyWebAPI\Session(
+            'c6dcb66351104f2aa5d5d88e746abdf4',
+            '969410d48dbc409499f33d550ddf7460',
+            'http://localhost:8000/callback'
+        );
 
-        return response()->json([
-          'access_token' => Auth::user()->access_token
-        ])
+        $session->requestAccessToken($request->code);
+
+        $playlists = $api->getUserPlaylists($api->me()["id"], [
+          'limit' => 5
+        ]);
+
+        return response()->json(['playlists' => $playlists]);
       }
 }

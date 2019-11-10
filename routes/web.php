@@ -40,4 +40,8 @@ Route::get('/callback', "UserController@create");
 
 Route::post("/search", "SearchController@search");
 
-Route::post('/host/access', "UserController@access");
+Route::post("/queue/add", "QueueController@addSong");
+Route::post("/queue/delete", "QueueController@deleteSong");
+Route::post("/queue/get", "QueueController@getPartyQueue");
+
+Route::post("/user/playlists", "UserController@getPlaylists");

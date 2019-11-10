@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
+
     <div class="d-flex align-items-center" style="height: 100%;">
         <div class="col">
             <div class="d-flex justify-content-center">
@@ -16,23 +16,6 @@
                     <a href="\join" class="btn btn-primary btn-main">
                         <h1 class="text-light">Join</h1>
                     </a>
-
-=======
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
->>>>>>> ee1e759359cf2f456f0ea743fd8ec9ca77114ab2
                 </div>
             </div>
         </div>

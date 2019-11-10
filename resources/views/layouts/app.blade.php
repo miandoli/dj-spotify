@@ -10,18 +10,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <script src="js/authentication.js"></script>
-<<<<<<< HEAD
-=======
     <script src="{{ asset('js/join.js') }}" defer></script>
     <script src="{{ asset('js/all.js') }}" defer></script>
     <script src="{{ asset('js/party.js') }}" defer></script>
-    <script src="{{ asset('js/join.js') }}" defer></script>
-    <script src="{{ asset('js/all.js') }}" defer></script>
-    <script src="{{ asset('js/party.js') }}" defer></script>
->>>>>>> 17534509392fd39c69edafcaf25627fd5cd6cd6a
-
+    <script src="{{ asset('js/player.js') }}" defer></script>
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -32,32 +24,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
+        <div class="container-fluid bg-dark" style="height: 100vh;">
             @yield('content')
-        </main>
+        </div>
     </div>
 </body>
 </html>

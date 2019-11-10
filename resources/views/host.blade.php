@@ -60,4 +60,5 @@
             </div>
         </div>
     </div>
+    <button onclick="getUser()">click me</button>
 @endsection
