@@ -98,7 +98,7 @@ class QueueController extends Controller
       $current = $api->getMyCurrentTrack();
 
 
-      if($current->is_playing == false) {
+      if(!$request->session()->has('song') || ($request->session()->get('song') != $current->item->id) || $current->is_playing == false) {
         $track = Queue::where("party_id", Auth::user()->party->id)->orderBy("litness_score")->first();
         $request->session()->put('song', $track->song_id);
 
@@ -111,7 +111,7 @@ class QueueController extends Controller
         return response()->json(["song" => $api->getTrack($track->song_id)]);
       }
 
-        return response()->json(["song" => null]);
+        return response()->json(["song"] => null);
     }
 
 
