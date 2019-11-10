@@ -20,7 +20,7 @@ function valid() {
 }
 
 $(document).ready(function () {
-    $("#txtCode").change(function(){
+    $("#txtCode").on('input', function(){
         valid()
     });
     valid();

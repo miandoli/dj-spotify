@@ -28,8 +28,22 @@
 </head>
 <body>
     <div id="app">
-        <div class="container-fluid bg-dark" style="height: 100vh;">
+        <div class="bg-secondary" style="height: 10vh; width: 100%;">
+            <div class="d-flex justify-content-center align-items-center" style="height: 100%;">
+                <img src="/img/logo.png" class="img-fluid" alt="logo" style="width: 3rem;">
+                <h1 class="text-light text-uppercase">DJ Spotify</h1>
+            </div>
+        </div>
+        <div class="container-fluid bg-dark" style="height: 80vh;">
             @yield('content')
+        </div>
+        <div class="bg-secondary" style="height: 10vh; width: 100%;">
+            <div class="d-flex justify-content-center align-items-center" style="height: 50%;">
+                <p class="text-light m-0" style="font-size: 0.75rem;">Created by Matt Iandoli, Micheal Bosik, and Luke Trujillo</p>
+            </div>
+            <div class="d-flex justify-content-center align-items-center" style="height: 50%;">
+                <h4 class="text-light">HackWITus 2019</h4>
+            </div>
         </div>
     </div>
 </body>

@@ -26,3 +26,7 @@ Route::get('/host', function () {
 Route::get('/party/{party_id}', function () {
     return view('party');
 });
+
+Route::get('/host/playlist', function () {
+    return view('playlist');
+});
