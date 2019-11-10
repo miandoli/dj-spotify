@@ -8,10 +8,5 @@ class Party extends Model
 {
     protected $table = "party";
 
-    protected $fillable = ["name"];
-
-
-    function host() {
-      return $this->hasOne(User::class, 'user_id');
-    }
+    protected $fillable = ["code"];
 }

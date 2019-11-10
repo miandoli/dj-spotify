@@ -15,7 +15,7 @@ class CreateHostqueueTable extends Migration
     {
         Schema::create('hostqueue', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id');
+            $table->integer('host_id');
             $table->integer('party_id');
             $table->timestamps();
         });

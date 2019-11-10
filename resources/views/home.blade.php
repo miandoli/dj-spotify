@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="d-flex align-items-center" style="height: 100%;">
         <div class="col">
             <div class="d-flex justify-content-center">

@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Auth;
-use \App\User;
+use Illuminate\Support\Facades\Auth;
+use \App\Host;
 
 use Rennokki\Larafy\Larafy;
 use GuzzleHttp;
 
 use SpotifyWebAPI;
+use \App\Party;
 
 class UserController extends Controller
 {
@@ -20,7 +21,12 @@ class UserController extends Controller
      * @param  Request $request [description]
      * @return [type]           [description]
      */
-    function index(Request $request) {
+    function index() {
+        if(Auth::check()) {
+          $party = Auth::user()->party;
+          return redirect("/host/{$party->code}/");
+        }
+
         $session = new SpotifyWebAPI\Session(
             'c6dcb66351104f2aa5d5d88e746abdf4',
             '969410d48dbc409499f33d550ddf7460',
@@ -33,7 +39,6 @@ class UserController extends Controller
               'user-read-private',
           ],
         ];
-
         header('Location: ' . $session->getAuthorizeUrl($options));
         die();
       }
@@ -48,33 +53,29 @@ class UserController extends Controller
 
         $session->requestAccessToken($request->code);
 
-        $user = User::create([
+        $user = Host::create([
           'access_token' => $session->getAccessToken(),
           'refresh_token' => $session->getRefreshToken()
         ]);
 
         Auth::login($user);
 
-        $party = Party::create([
-          'name' => $request->name
-        ]);
+        $party = new Party;
 
-        $base = "AAAA";
+        $base = chr(rand(65,90)).chr(rand(65,90)).chr(rand(65,90)).chr(rand(65,90));
 
         while(Party::where('code', $base)->exists()) {
-          $base++;
+          $base = chr(rand(65,90)).chr(rand(65,90)).chr(rand(65,90)).chr(rand(65,90));
         }
 
         $party->code = $base;
-
-        $user->party_id = $party->id;
-
-        $party->user_id = $user->id;
-
-        $user->save();
         $party->save();
 
-        return redirect("/host/{$party->code}");
+
+        $user->party_id = $party->id;
+        $user->save();
+
+        return redirect("/host/{$party->code}/");
 
       }
 }

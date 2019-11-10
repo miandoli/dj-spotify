@@ -19,12 +19,17 @@ Route::get('/join', function () {
     return view('join');
 });
 
-Route::get('/host', function () {
-    return view('host');
+Route::get('/host', "UserController@index");
+
+Route::get("/host/{code}", function() {
+  return view('host');
 });
 
-Route::get('/party/{party_id}', function () {
-    return view('join');
+Route::get("/party/{code}", "PartyController@index");
+
+
+Route::get('/party', function () {
+    return view('party');
 });
 Route::post("/", function() {
   return view('welcome');

@@ -15,7 +15,7 @@ class CreatePartyqueueTable extends Migration
     {
         Schema::create('partyqueue', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('song_id')
+            $table->integer('song_id');
             $table->timestamps();
         });
     }
