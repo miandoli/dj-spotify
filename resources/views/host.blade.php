@@ -1,6 +1,48 @@
 @extends('layouts.app')
 
 @section('content')
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+
+
+    <script >
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            
+            var player = new Spotify.Player({
+                name: 'DJ Spotify Player',
+                getOAuthToken: callback => {
+    // Run code to get a fresh access token
+
+                callback('{{ Auth::user()->access_token }}');
+            },
+            volume: 0.5
+            });
+
+            player.connect().then(success => {
+                if (success) {
+                    console.log('The Web Playback SDK successfully connected to Spotify!');
+                }
+            });
+
+            $.ajax({
+                    type: "GET",
+                    url: "/play/next",
+                    success: function(data) {
+                        console.log("next");
+                    }
+               });
+
+            player.addListener('player_state_changed', ({ position, duration, track_window: {current_track}}) => {
+               $.ajax({
+                    type: "POST",
+                    url: "/play/next",
+                    success: function(data) {
+                        console.log("next");
+                    }
+               });
+            });
+        };
+    </script>
+
     <script src="{{ asset('js/host.js') }}" defer></script>
     <div class="row" style="height: 100%;">
         <div class="col-sm-6 col-12" style="height: 100%;">
