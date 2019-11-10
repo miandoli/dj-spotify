@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHostqueueTable extends Migration
+class CreateQueuesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateHostqueueTable extends Migration
      */
     public function up()
     {
-        Schema::create('hostqueue', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->integer('host_id');
+        Schema::create('queues', function (Blueprint $table) {
+            $table->string('id');
             $table->integer('party_id');
+            $table->decimal('litness_score');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateHostqueueTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hostqueue');
+        Schema::dropIfExists('queues');
     }
 }
